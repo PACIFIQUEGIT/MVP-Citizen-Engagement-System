@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Citizen Complaint Submission</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: auto;
+      padding: 3px;
+      background: #f9f9f9;
+      position: relative;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .success {
+      color: green;
+      margin-top: 10px;
+    }
+
+    /* Styling for the login/signup buttons */
+    .top-buttons {
+      top: 20px;
+      right: 0px !important;
+      display: flex;
+      gap: 10px;
+    }
+    .top-buttons button {
+      padding: 10px 15px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .top-buttons button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Buttons for Login and Signup -->
+  <div class="top-buttons">
+    <button onclick="window.location.href = 'admin.html';">Admin</button>
+    <button onclick="window.location.href = 'admin-signup.html';">Create New Admin</button>
+  </div>
+
+  <h2>Submit a Complaint or Feedback</h2>
+
+  <form id="complaintForm" enctype="multipart/form-data" method="POST">
+    <input type="text" name="fullName" placeholder="Full Name" required />
+    <input type="email" name="email" placeholder="Email Address" required />
+    <input type="text" name="phone" placeholder="Phone Number" />
+    <input type="text" name="location" placeholder="Location" />
+    
+    <select name="category">
+      <option value="Health">Health</option>
+      <option value="Education">Education</option>
+      <option value="Sport">Sport</option>
+    </select>
+
+    <input type="text" name="title" placeholder="Complaint Title" />
+    <textarea name="description" placeholder="Detailed Description"></textarea>
+
+    <input type="file" name="attachment" />
+    <button type="submit">Submit Complaint</button>
+  </form>
+
+
+  <!-- Track Complaint Button -->
+  <div style="text-align: center; margin-top: 5px;">
+    <button onclick="window.location.href = 'tracking.html';" style="background-color: #17a2b8;">
+      Track Your Complaint
+    </button>
+  </div>
+
+
+
+  <script>
+    document.getElementById('complaintForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const form = document.getElementById('complaintForm');
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch('http://localhost:3000/api/complaints', {
+          method: 'POST',
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert(`✅ Complaint submitted! Ticket ID: ${result.ticketId}`);
+        } else {
+          alert(`❌ Error: ${result.message}`);
+        }
+      } catch (err) {
+        console.error('Error submitting form:', err);
+        alert('❌ Submission failed: Network or server error');
+      }
+    });
+  </script>
+
+</body>
+</html>
