@@ -88,10 +88,6 @@
       background: #0056b3;
     }
 
-    .track-button {
-      
-    }
-
     .track-button button {
       background-color: #17a2b8;
       color: white;
@@ -157,6 +153,7 @@
   </div>
 
   <script>
+    const BASE_URL = 'https://mvp-citizen-engagement-system.onrender.com';
     document.getElementById('complaintForm').addEventListener('submit', async function (e) {
       e.preventDefault();
 
@@ -164,7 +161,7 @@
       const formData = new FormData(form);
 
       try {
-        const response = await fetch('http://localhost:3000/api/complaints', {
+        const response = await fetch('${BASE_URL}/api/complaints', {
           method: 'POST',
           body: formData
         });
