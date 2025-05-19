@@ -29,7 +29,7 @@
 
     .top-buttons {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
       gap: 10px;
       margin-bottom: 15px;
       flex-wrap: wrap;
@@ -70,7 +70,7 @@
     }
 
     textarea {
-      resize: vertical;
+      resize: 30px;
     }
 
     button[type="submit"] {
@@ -89,8 +89,7 @@
     }
 
     .track-button {
-      text-align: center;
-      margin-top: 15px;
+      
     }
 
     .track-button button {
@@ -122,8 +121,14 @@
   <div class="container">
     <!-- Top Right Buttons -->
     <div class="top-buttons">
+      <div class="track-button">
+        <button onclick="window.location.href = 'tracking.html';">
+          Track Your Complaint
+        </button>
+      </div>
+      <div>
       <button onclick="window.location.href = 'admin.html';">Admin</button>
-      <button onclick="window.location.href = 'admin-signup.html';">Create New Admin</button>
+      <button onclick="window.location.href = 'admin-signup.html';">Create New Admin</button></div>
     </div>
 
     <h2>Submit a Complaint or Feedback</h2>
@@ -148,11 +153,7 @@
       <button type="submit">Submit Complaint</button>
     </form>
 
-    <div class="track-button">
-      <button onclick="window.location.href = 'tracking.html';">
-        Track Your Complaint
-      </button>
-    </div>
+    
   </div>
 
   <script>
