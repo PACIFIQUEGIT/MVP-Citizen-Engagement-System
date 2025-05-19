@@ -52,7 +52,8 @@ mvp_citizen_engagement_system/
 ├── server.js
 ├── db.js
 ├── .env
-├── package.json├── package-lock.json
+├── package.json
+├── package-lock.json
 └── README.md
 
 ⚙️ Setup Instructions
