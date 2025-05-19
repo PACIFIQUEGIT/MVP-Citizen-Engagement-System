@@ -149,7 +149,7 @@
     const msg = document.getElementById('loginMessage');
 
     try {
-      const res = await fetch('http://localhost:3000/api/auth/login', {
+      const res = await fetch('${BASE_URL}/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -178,7 +178,7 @@
     tbody.innerHTML = '';
 
     try {
-      const res = await fetch('http://localhost:3000/api/complaints/all', {
+      const res = await fetch('${BASE_URL}/api/complaints/all', {
         headers: { Authorization: 'Bearer ' + token }
       });
 
@@ -229,7 +229,7 @@
     }
 
     try {
-      const res = await fetch(`http://localhost:3000/api/complaints/status/${ticketId}`, {
+      const res = await fetch(`${BASE_URL}/api/complaints/status/${ticketId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -261,7 +261,7 @@
     }
 
     try {
-      const res = await fetch(`http://localhost:3000/api/complaints/response/${ticketId}`, {
+      const res = await fetch(`${BASE_URL}/api/complaints/response/${ticketId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

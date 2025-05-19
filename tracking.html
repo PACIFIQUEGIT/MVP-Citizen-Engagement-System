@@ -117,7 +117,7 @@
       statusDiv.innerHTML = '';
 
       try {
-        const response = await fetch(`http://localhost:3000/api/complaints/status/${ticketId}`);
+        const response = await fetch(`${BASE_URL}/api/complaints/status/${ticketId}`);
         const contentType = response.headers.get("content-type");
 
         if (!response.ok) {
